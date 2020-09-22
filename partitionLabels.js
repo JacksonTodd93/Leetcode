@@ -60,5 +60,6 @@ var partitionLabels = function (string) {
   result.push(finish - start + 1);
   return result;
 }
-console.log(partitionLabels('abcd'));
+
+console.log(partitionLabels('ababcbacadefegdehijhklij'))
 // https://leetcode.com/problems/partition-labels/
