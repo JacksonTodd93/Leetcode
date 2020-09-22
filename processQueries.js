@@ -13,3 +13,5 @@ var processQueries = function (queries, m) {
   }
   return result;
 };
+
+// https://leetcode.com/problems/queries-on-a-permutation-with-key/
