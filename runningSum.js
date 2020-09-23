@@ -11,9 +11,8 @@ var runningSum = function(nums) {
   var running = 0;
   var result = [];
   for (var i = 0; i < nums.length; i += 1){
+    running += nums[i];
     result.push(running += nums[i]);
   }
   return result;
 };
-
-console.log(runningSum([1, 2, 3, 4]))
