@@ -33,8 +33,41 @@ There are two possible lower bound values for the solution to this problem:
 - The total weight of all packages divided by the number of days. (i.e. if I have 60 lbs of packages and 4 days to move them, I must move an average of 15 lbs of packages every day, so that's the lowest possible value that the answer could be)
 
 - Calculate both of these possible lower bound values
+- Create a helper function that will take in the array, number of days, and the lower bound value and determine if this is a valid solution
+- If not, increase the test value, and try again
  */
+var canShip = function (weights, D, capacity) {
+  let weightOnBoard = 0, days = 1;
+  for (const weight of weights) {
+    weightOnBoard += weight;
+    if (weightOnBoard > capacity) {
+      days += 1;
+      weightOnBoard = weight;
+      if (days > D) {
+        break;
+      }
+    }
+  }
+  return days <= D;
+}
 
-var shipWithinDays = function(weights, D) {
-
+var shipWithinDays = function (weights, D) {
+  let totalWeight = weights.reduce((acc, el) => acc + el, 0);
+  let lowerBound = Math.floor(Math.max(Math.max(...weights), totalWeight / D));
+  let validSolution = false;
+  console.log(lowerBound);
+  while (!validSolution) {
+    if (validSolution = canShip(weights, D, lowerBound)){
+      break;
+    }
+    lowerBound += 1;
+  }
+  return lowerBound;
 };
+
+/**
+ *
+Runtime: 164 ms, faster than 25.00% of JavaScript online submissions for Capacity To Ship Packages Within D Days.
+Memory Usage: 42.4 MB, less than 7.14% of JavaScript online submissions for Capacity To Ship Packages Within D Days.
+
+ */
