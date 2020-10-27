@@ -30,18 +30,20 @@ var minSubArrayLen = function (target, nums) {
   let runningsum = 0;
   for (let i = 0; i < nums.length; i++) {
     runningSum = nums[i];
+    endpoint = i + 1;
     while (runningSum < target) {
       runningSum += nums[endpoint];
       endpoint++;
     }
+    console.log(runningSum, i, endpoint);
     if (endpoint - i < result || result === 0) {
       result = endpoint - i;
-      console.log(runningSum, i, endpoint);
-      endpoint = i + 1;
+      runningSum = 0;
     }
   }
   return result;
 };
 
 let s = 7, nums = [2,3,1,2,4,3]
-console.log(minSubArrayLen(s, nums))
+let target = 11, arr = [1,2,3,4,5]
+console.log(minSubArrayLen(target, arr))
